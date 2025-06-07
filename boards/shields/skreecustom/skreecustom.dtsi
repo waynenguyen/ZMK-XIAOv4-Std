@@ -29,7 +29,7 @@
 
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
-
+	wakeup-source;
         diode-direction = "col2row";
         row-gpios
              = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //r1-7 0.03 0.28 1.01 0.09 0.10 1.11 1.15thumbs
