@@ -20,8 +20,9 @@
 &kp TAB    &kp Q   &kp W   &kp E      &kp R      &kp T       &kp Y    &kp U     &kp I      &kp O    &kp P     &kp MINUS
 &kp LSHFT  &kp A   &kp S   &kp D      &kp F      &kp G       &kp H    &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
                    &kp X   &kp C                                                &kp COMMA  &kp DOT
-                           &kp LSHFT  &kp SPACE  &kp BSPC    &kp DEL  &kp RET   &kp RGUI
-                           &kp LCTRL  &kp LALT   &mo 1       &mo 2    &kp RALT  &kp RCTRL
+                                    &kp N1    &kp N1        &kp N1    &kp N1   
+                                    &kp N1    &kp N1        &kp N1    &kp N1 
+                                    &kp N1    &kp N1        &kp N1    &kp N1 
             >;
         };
 
@@ -31,8 +32,9 @@
 &trans      &trans        &trans        &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &trans        &trans        &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans
                           &trans        &trans                                                &trans  &trans
-                                        &trans        &trans        &trans    &trans  &trans  &trans
-                                        &trans        &trans        &trans    &trans  &trans  &trans
+                                                    &trans  &trans    &trans  &trans
+                                                    &trans  &trans    &trans  &trans
+                                                    &trans  &trans    &trans  &trans
             >;
         };
 
@@ -42,8 +44,9 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans       &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans       &trans  &trans  &trans  &trans  &trans
                 &trans &trans                                          &trans  &trans
-                        &trans  &trans  &trans    &bootloader  &trans  &trans
-                        &trans  &trans  &trans    &trans       &trans  &trans
+                                        &trans  &trans    &trans  &trans
+                                        &trans  &trans    &trans  &trans
+                                        &trans  &trans    &trans  &trans
             >;
         };
 
@@ -53,8 +56,9 @@
 &trans  &trans  &trans  &trans  &trans       &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans       &trans    &trans  &trans  &trans  &trans  &trans  &trans
                 &trans  &trans                                         &trans  &trans
-                        &trans  &bootloader  &trans    &trans  &trans  &trans
-                        &trans  &trans       &trans    &trans  &trans  &trans
+                                                    &trans  &trans    &trans  &trans
+                                                    &trans  &trans    &trans  &trans
+                                                    &trans  &trans    &trans  &trans
             >;
         };
     };
