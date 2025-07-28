@@ -21,9 +21,9 @@
 &kp LSHFT  &kp A   &kp S     &kp D      &kp F      &kp G       &kp H    &kp J     &kp K      &kp L     &kp SEMI  &kp SQT
 &kp GRAVE  &kp Z   &kp X     &kp C      &kp V      &kp B       &kp N    &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp BSLH
                    &kp LEFT  &kp RIGHT                                            &kp UP     &kp DOWN
-                                        &kp SPACE  &kp BSPC    &kp DEL  &kp RET 
+                                        &kp SPACE  &kp BSPC    &kp DEL  &kp RET
                                         &kp LCTRL  &mo 1       &mo 2    &kp LALT
-                                        &kp Q      &kp Q       &kp Q    &kp Q
+                                        &kp LALT   &kp LGUI    &kp N1   &kp N2
             >;
         };
 
@@ -34,9 +34,9 @@
 &trans      &trans        &trans        &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &trans        &trans        &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans
                           &trans        &trans                                                &trans  &trans
-                                                      &trans        &trans    &trans &trans 
-                                                      &trans        &trans    &trans &trans
-                                                    &trans        &trans    &trans &trans
+                                                      &trans        &trans    &trans  &trans
+                                                      &trans        &trans    &trans  &trans
+                                                      &trans        &trans    &trans  &trans
             >;
         };
 
@@ -62,7 +62,7 @@
                 &trans  &trans                                         &trans  &trans
                                 &bootloader  &trans    &trans  &trans
                                 &trans       &trans    &trans  &trans
-                                &trans  &trans    &trans       &trans
+                                &trans       &trans    &trans  &trans
             >;
         };
     };
