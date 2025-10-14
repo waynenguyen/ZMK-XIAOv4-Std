@@ -16,9 +16,6 @@
         ;
 };
 
-
-
-
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 &spi1 {
     cs-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
