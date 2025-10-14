@@ -1,5 +1,9 @@
 #include "skreecustom.dtsi"
 
+&left_encoder {
+	status = "okay";
+};
+
 &kscan0 {
     col-gpios           // Col1-7 1.07 1.14 1.05 1.13 1.03 1.12 0.16 
         = <&gpio1 7 GPIO_ACTIVE_HIGH> 
