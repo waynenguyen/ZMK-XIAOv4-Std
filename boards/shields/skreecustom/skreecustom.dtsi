@@ -97,3 +97,8 @@
 	<&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>;
     };
 };
+
+//disable RGB for encoder
+&spi3 {
+    status = "disabled";
+};
