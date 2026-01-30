@@ -46,7 +46,7 @@ default_transform: keymap_transform_0 {
     };
 
 //right hand trackball
-    split_inputs {
+    split_inputs: split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
 
