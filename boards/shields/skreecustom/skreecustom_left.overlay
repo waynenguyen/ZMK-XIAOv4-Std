@@ -10,11 +10,17 @@
     };
 };
 
+// Disable the peripheral split input (only needed on dongle)
+&trackball_peripheral_split {
+    status = "disabled";
+};
+
 // Add input split for sending left trackball data to dongle
 &split_inputs {
     trackball_central_split: trackball_central_split@1 {
         compatible = "zmk,input-split";
         reg = <1>;
+        device = <&trackball_central>;
     };
 };
 
@@ -45,9 +51,4 @@
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
     };
-};
-
-// Configure input split to send trackball data to dongle
-&trackball_central_split {
-    device = <&trackball_central>;
 };
