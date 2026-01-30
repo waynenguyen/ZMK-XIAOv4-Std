@@ -1,4 +1,5 @@
-if SHIELD_SKREECUSTOM_LEFT
+# Dongle configuration - central role
+if SHIELD_SKREECUSTOM_DONGLE
 
 config ZMK_KEYBOARD_NAME
     default "Skree Custom"
@@ -6,21 +7,16 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
 endif
 
+# Left and right halves - common peripheral configs
 if SHIELD_SKREECUSTOM_LEFT || SHIELD_SKREECUSTOM_RIGHT
-
-config ZMK_SPLIT
-    default y
 
 config ZMK_SLEEP
     default y
-
-config ZMK_POINTING
-    default y
-
-config ZMK_POINTING_SMOOTH_SCROLLING
-    default n
 
 config SPI
     default y
@@ -43,9 +39,22 @@ config ZMK_KSCAN_MATRIX_WAIT_BEFORE_INPUTS
 config ZMK_KSCAN_MATRIX_WAIT_BETWEEN_OUTPUTS
     default 1
 
-
-endif
-
 config ZMK_RGB_UNDERGLOW
     default y
     imply WS2812_STRIP
+
+endif
+
+# All shields - common split and pointing configs
+if SHIELD_SKREECUSTOM_LEFT || SHIELD_SKREECUSTOM_RIGHT || SHIELD_SKREECUSTOM_DONGLE
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_POINTING
+    default y
+
+config ZMK_POINTING_SMOOTH_SCROLLING
+    default n
+
+endif

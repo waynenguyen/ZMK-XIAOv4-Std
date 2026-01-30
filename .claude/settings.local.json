@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"c:\\\\Users\\\\Skree\\\\Documents\\\\GitHub\\\\ZMK-XIAOv4-Std\" log --oneline)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:zmk.dev)"
+    ]
+  }
+}

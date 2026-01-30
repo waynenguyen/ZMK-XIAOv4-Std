@@ -1,23 +1,30 @@
 #include "skreecustom.dtsi"
 
- &default_transform {
+/ {
+    // ESB split configuration
+    esb_split {
+        compatible = "zmk,esb-split";
+        base-addr-0 = <0xE7 0xE7 0xE7 0xE7>;
+        base-addr-1 = <0xC2 0xC2 0xC2 0xC2>;
+        addr-prefix = <0xE7 0xC2 0xC3 0xC4 0xC5 0xC6 0xC7 0xC8>;
+    };
+};
+
+&default_transform {
     col-offset = <6>;
 };
 
 &kscan0 {
-    col-gpios           // Col1-7 1.07 1.14 1.05 1.13 1.03 1.12 0.16 
-        = <&gpio1 7 GPIO_ACTIVE_HIGH> 
+    col-gpios           // Col1-7 1.07 1.14 1.05 1.13 1.03 1.12 0.16
+        = <&gpio1 7 GPIO_ACTIVE_HIGH>
         , <&gpio1 14 GPIO_ACTIVE_HIGH>
         , <&gpio1 5 GPIO_ACTIVE_HIGH>
-        , <&gpio1 13 GPIO_ACTIVE_HIGH> 
-        , <&gpio1 3 GPIO_ACTIVE_HIGH> 
-        , <&gpio1 12 GPIO_ACTIVE_HIGH> 
-//      , <&gpio0 16 GPIO_ACTIVE_HIGH> 
+        , <&gpio1 13 GPIO_ACTIVE_HIGH>
+        , <&gpio1 3 GPIO_ACTIVE_HIGH>
+        , <&gpio1 12 GPIO_ACTIVE_HIGH>
+//      , <&gpio0 16 GPIO_ACTIVE_HIGH>
         ;
 };
-
-
-
 
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 &spi1 {
@@ -36,7 +43,7 @@
     };
 };
 
-// Overrides for the input-split child node
+// Configure input split to send trackball data to dongle
 &trackball_peripheral_split {
     device = <&trackball_peripheral>;
 };
