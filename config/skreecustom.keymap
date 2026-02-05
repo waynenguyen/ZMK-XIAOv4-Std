@@ -4,273 +4,78 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <dt-bindings/led/led.h>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
-#include <dt-bindings/zmk/mouse.h>
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-&mt {
-    flavor = "tap-unless-interrupted";
-    tapping-term-ms = <2000>;
-};
-
 / {
-    behaviors {
-        hold_tap_orig: hold_tap_orig {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_ORIG";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-        };
-
-        star_power: star_power {
-            compatible = "zmk,behavior-mod-morph";
-            label = "STAR_POWER";
-            bindings = <&kp ASTERISK>, <&kp CARET>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        excl_and: excl_and {
-            compatible = "zmk,behavior-mod-morph";
-            label = "EXCL_AND";
-            bindings = <&kp AMPERSAND>, <&kp EXCLAMATION>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        at_hash: at_hash {
-            compatible = "zmk,behavior-mod-morph";
-            label = "AT_HASH";
-            bindings = <&kp AT_SIGN>, <&kp HASH>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        dollar_percent: dollar_percent {
-            compatible = "zmk,behavior-mod-morph";
-            label = "DOLLAR_PERCENT";
-            bindings = <&kp DOLLAR>, <&kp PERCENT>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        symbol12: symbol12 {
-            compatible = "zmk,behavior-mod-morph";
-            label = "SYMBOL12";
-            bindings = <&kp EXCLAMATION>, <&kp AT_SIGN>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        symbol34: symbol34 {
-            compatible = "zmk,behavior-mod-morph";
-            label = "SYMBOL34";
-            bindings = <&kp HASH>, <&kp DOLLAR>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        symbol56: symbol56 {
-            compatible = "zmk,behavior-mod-morph";
-            label = "SYMBOL56";
-            bindings = <&kp PERCENT>, <&kp CARET>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        symbol78: symbol78 {
-            compatible = "zmk,behavior-mod-morph";
-            label = "SYMBOL78";
-            bindings = <&kp AMPERSAND>, <&kp ASTERISK>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        symbol00: symbol00 {
-            compatible = "zmk,behavior-mod-morph";
-            label = "SYMBOL00";
-            bindings = <&kp GRAVE>, <&kp TILDE>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-    };
-
-    macros {
-        copy: copy {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_COMMAND>,
-                <&macro_tap>,
-                <&kp C>,
-                <&macro_release>,
-                <&kp LEFT_COMMAND>;
-
-            label = "COPY";
-        };
-
-        paste: paste {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_COMMAND>,
-                <&macro_tap>,
-                <&kp V>,
-                <&macro_release>,
-                <&kp LEFT_COMMAND>;
-
-            label = "PASTE";
-        };
-
-        ctrl_click: ctrl_click {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_COMMAND>,
-                <&macro_tap>,
-                <&mkp LCLK>,
-                <&macro_release>,
-                <&kp LEFT_COMMAND>;
-
-            label = "CTRL_CLICK";
-        };
-
-        ctrl_x: ctrl_x {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_COMMAND>,
-                <&macro_tap>,
-                <&kp X>,
-                <&macro_release>,
-                <&kp LEFT_COMMAND>;
-
-            label = "CTRL_X";
-        };
-
-        ctrl_z: ctrl_z {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_COMMAND>,
-                <&macro_tap>,
-                <&kp Z>,
-                <&macro_release>,
-                <&kp LEFT_COMMAND>;
-
-            label = "CTRL_Z";
-        };
-
-        ctrl_y: ctrl_y {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_COMMAND>,
-                <&macro_tap>,
-                <&kp Y>,
-                <&macro_release>,
-                <&kp LEFT_COMMAND>;
-
-            label = "CTRL_Y";
-        };
-
-        ctrl_caret: ctrl_caret {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_COMMAND>,
-                <&macro_tap>,
-                <&kp GRAVE>,
-                <&macro_release>,
-                <&kp LEFT_COMMAND>;
-
-            label = "CTRL_CARET";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp ESC                &kp HOME  &kp END  &copy                     &paste         &ctrl_x      &symbol12            &symbol34        &symbol56           &symbol78  &symbol00     &kp MINUS
-&kp TAB                &kp Q     &kp W    &kp E                     &kp R          &kp T        &kp Y                &kp U            &kp I               &kp O      &kp P         &kp BACKSLASH
-&kp LEFT_SHIFT         &kp A     &kp S    &kp D                     &kp F          &kp G        &kp H                &kp J            &kp K               &kp L      &kp UP_ARROW  &kp EQUAL
-&mt LEFT_COMMAND HASH  &kp Z     &kp X    &kp C                     &kp V          &kp B        &kp N                &kp M            &kp COMMA           &kp DOT    &kp DOWN      &kp RIGHT
-                                 &ctrl_z  &dollar_percent                                                                             &kp LEFT_CONTROL    &kp LEFT
-                                          &kp SPACE                 &kp BACKSPACE  &mkp LCLK                                          &mt RCTRL ENTER
-                                          &mt LEFT_COMMAND AT_SIGN  &lt 1 DEL      &mkp RCLK    &mt RIGHT_ALT SLASH  &lt 1 SEMICOLON  &mt LEFT_SHIFT SQT
+&kp ESC    &kp N1  &kp N2    &kp N3     &kp N4     &kp N5      &kp N6  &kp N7    &kp N8     &kp N9    &kp N0    &kp EQUAL
+&kp TAB    &kp Q   &kp W     &kp E      &kp R      &kp T       &kp Y   &kp U     &kp I      &kp O     &kp P     &kp MINUS
+&kp LSHFT  &kp A   &kp S     &kp D      &kp F      &kp G       &kp H   &kp J     &kp K      &kp L     &kp SEMI  &kp SQT
+&kp GRAVE  &kp Z   &kp X     &kp C      &kp V      &kp B       &kp N   &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp BSLH
+                   &kp LEFT  &kp RIGHT                                           &kp UP     &kp DOWN
+                             &kp LSHFT  &kp SPACE  &kp BSPC                      &kp DEL
+                             &kp LCTRL  &kp LALT   &mo 1       &mo 2   &kp RALT  &kp LGUI
             >;
         };
 
         layer_1 {
             bindings = <
-&kp GRAVE       &kp F1            &kp F2            &kp F3            &kp F4                &kp F5                   &kp PAGE_DOWN  &kp F6         &kp F7        &kp F8      &kp F9         &kp F12
-&kp TILDE       &kp LS(NUMBER_1)  &kp LS(NUMBER_2)  &kp LS(NUMBER_3)  &kp LEFT_BRACE        &kp RIGHT_BRACE          &kp N7         &kp N8         &kp N9        &kp LS(N0)  &kp LS(N0)     &trans
-&bt BT_CLR_ALL  &kp NUMBER_1      &kp NUMBER_2      &kp NUMBER_3      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp NUMBER_4   &kp N5         &kp NUMBER_6  &kp N7      &kp PG_UP      &trans
-&kp BACKSPACE   &trans            &trans            &trans            &kp LEFT_BRACKET      &kp RIGHT_BRACKET        &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3  &trans      &kp PAGE_DOWN  &kp END
-                                  &ctrl_y           &none                                                                                          &kp N0        &kp HOME
-                                                    &kp SPACE         &kp BACKSPACE         &trans                                                 &kp N0
-                                                    &kp N0            &kp NUMBER_1          &kp NUMBER_2             &kp PG_UP      &kp BACKSPACE  &kp SPACE
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                          &trans        &trans                                                &trans  &trans
+                                        &trans        &trans        &trans                    &trans
+                                        &trans        &trans        &trans    &trans  &trans  &trans
             >;
         };
 
         layer_2 {
             bindings = <
-&trans  &trans           &trans         &trans        &trans                &trans                   &trans  &trans        &trans        &trans        &trans  &trans
-&trans  &kp EXCLAMATION  &kp AT_SIGN    &kp HASH      &kp LEFT_BRACE        &kp RIGHT_BRACE          &trans  &kp N7        &kp N8        &kp N9        &trans  &trans
-&trans  &kp DOLLAR       &kp PERCENT    &kp LCTRL     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &trans  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &trans  &trans
-&trans  &trans           &kp AMPERSAND  &kp ASTERISK  &kp LEFT_BRACKET      &kp RIGHT_BRACKET        &kp N0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans
-                         &trans         &trans                                                                             &trans        &trans
-                                        &kp N0        &kp NUMBER_1          &kp NUMBER_2                                   &trans
-                                        &kp NUMBER_3  &kp NUMBER_4          &kp N5                   &trans  &trans        &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans       &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans       &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans       &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans       &trans  &trans  &trans
+                &trans  &trans                                    &trans       &trans
+                        &trans  &trans  &trans                    &bootloader
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
         layer_3 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                    &trans  &trans
-                        &trans  &trans  &trans                    &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
-        layer_4 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                    &trans  &trans
-                        &trans  &trans  &trans                    &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans  &trans  &trans  &trans
+                &trans  &trans                                        &trans  &trans
+                        &trans  &trans  &trans                        &trans
+                        &trans  &trans  &trans    &mkp MB1  &mkp MB2  &trans
             >;
         };
     };
 };
+
+// //right hand trackball overrides
+// &trackball_peripheral_listener {
+//     input-processors =
+//         <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,//this gets it to the default installation orientation
+//         <&zip_temp_layer 3 500>;//activate layer 3 within 500ms of the trackball moving
+// };
+// //left hand trackball overrides
+// &trackball_central_listener {
+//     input-processors = 
+//         <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,//this gets it to the default installation orientation
+//         <&zip_xy_scaler 1 3>,//multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
+//         <&zip_xy_to_scroll_mapper>,//make this trackball output scrolling events by default instead of cursor movement
+//         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;//invert vertical scrolling so that the view moves in the same direction as the top of the trackball.
+// };
