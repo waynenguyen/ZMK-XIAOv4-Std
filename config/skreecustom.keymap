@@ -207,6 +207,34 @@
 
             label = "CTRL_CARET";
         };
+
+        move_l: move_l {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL &kp LEFT_ALT>,
+                <&macro_tap>,
+                <&kp LEFT_ARROW>,
+                <&macro_release>,
+                <&kp LCTRL &kp LEFT_ALT>;
+
+            label = "MOVE_L";
+        };
+
+        move_r: move_r {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL &kp LEFT_ALT>,
+                <&macro_tap>,
+                <&kp RIGHT>,
+                <&macro_release>,
+                <&kp LCTRL &kp LEFT_ALT>;
+
+            label = "MOVE_R";
+        };
     };
 
     keymap {
@@ -214,10 +242,10 @@
 
         default_layer {
             bindings = <
-&kp ESC                &kp HOME  &kp END           &copy                     &paste         &ctrl_x      &ctrl_z                 &kp PG_UP        &kp PG_DN            &kp LEFT_ALT  &kp DEL       &kp MINUS
-&kp TAB                &kp Q     &kp W             &kp E                     &kp R          &kp T        &kp Y                   &kp U            &kp I                &kp O         &kp P         &kp BACKSLASH
-&kp LEFT_SHIFT         &kp A     &kp S             &kp D                     &kp F          &kp G        &kp H                   &kp J            &kp K                &kp L         &kp UP_ARROW  &kp EQUAL
-&mt LEFT_COMMAND HASH  &kp Z     &kp X             &kp C                     &kp V          &kp B        &kp N                   &kp M            &kp COMMA            &kp DOT       &kp DOWN      &kp RIGHT
+&kp ESC                &kp HOME  &kp END           &copy                     &paste         &ctrl_x      &ctrl_z                 &kp PG_UP        &kp PG_DN            &move_l   &move_r       &kp MINUS
+&kp TAB                &kp Q     &kp W             &kp E                     &kp R          &kp T        &kp Y                   &kp U            &kp I                &kp O     &kp P         &kp BACKSLASH
+&kp LEFT_SHIFT         &kp A     &kp S             &kp D                     &kp F          &kp G        &kp H                   &kp J            &kp K                &kp L     &kp UP_ARROW  &kp EQUAL
+&mt LEFT_COMMAND HASH  &kp Z     &kp X             &kp C                     &kp V          &kp B        &kp N                   &kp M            &kp COMMA            &kp DOT   &kp DOWN      &kp RIGHT
                                  &kp LEFT_BRACKET  &kp RIGHT_BRACKET                                                                              &kp LEFT_CONTROL     &kp LEFT
                                                    &kp SPACE                 &kp BACKSPACE  &mkp LCLK                                             &mt RIGHT_ALT ENTER
                                                    &mt LEFT_COMMAND AT_SIGN  &lt 1 DEL      &mkp RCLK    &mt LEFT_CONTROL SLASH  &lt 2 SEMICOLON  &mt LEFT_SHIFT SQT
